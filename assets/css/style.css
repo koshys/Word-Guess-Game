@@ -5,14 +5,33 @@
     background-size: 980px 980px;
     width : 980px;
     height : 980px;
+    position : relative;
+}
+
+.screen {
+    position : absolute;
+    top: 40%;
+    left : 50%;
+    width : 35%;
+    height : 40%;
+    color: white;
+    border-color: white;
+    border-style: solid;
+    border-width: thick;
+    border-radius: 25px;   
+    padding: 25px; 
 }
 
 @media screen and (max-width : 980px) {
+    .clearfix {
+        overflow: auto;
+    }    
     .board {
         background-size: 980px 980px;
         width : 980px; 
         height : 980px;        
-    }   
+    }
+       
 }
 
 @media screen and (max-width : 768px) {
