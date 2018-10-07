@@ -46,12 +46,36 @@
     },
 
     /**
+     * isEqualWord
+     * 
+     * there is a high probability that each trial wont be a match 
+     * so greedly check for the first unmatched map
+     */
+    this.isEqualWord = function() {
+
+        for ( var i = 0; i < w.choosenWord.length; i++)  {
+            if (w.choosenWord[i] !== w.currentWord[i] ) {
+                return false; 
+            }
+        }
+
+        return true;
+
+    }
+
+    /**
      * get a random word for the game
      * max = (this.dict.length -1)
      * min = 0
      * 1 is necessary when using floor to get an equal distribution of values called.
      */
     this.setChoosenWord = function() {
+
+        // reset atrributes
+        this.choosenWord = [],
+        this.currentWord = [],
+        this.guessedLetters = [],
+        this.totalGuesses = 0,
 
         // ramdom * ( max - min ) + min 
         this.choosenWord = this.dict[Math.floor(Math.random() * ( 1+ (this.dict.length -1) - 0  ) ) + 0 ].split("");
@@ -88,6 +112,12 @@ function run(w) {
     w.setStatic();
     w.setChoosenWord();
     drawBoard(w);
+
+    document.onkeyup = function(event) {
+        console.log(event.key.toLowerCase());
+        console.log(w.isEqualWord());
+
+    }
 }
 
 
