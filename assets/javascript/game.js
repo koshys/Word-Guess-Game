@@ -60,6 +60,10 @@
         for ( var i = 0; i < this.choosenWord.length; i++) {
             this.currentWord.push("_ ");
         }
+
+        // set the total guesses for the word to be thrice the lenght of the choosenWord
+        this.totalGuesses = this.choosenWord.length * 3;
+
     } // end of setChoosenWord
 
  }// end of WordGameObj
@@ -75,6 +79,7 @@
     document.querySelector(".current-word-static").innerHTML = w.currentWordStatic;
     document.querySelector(".current-word").innerHTML = w.currentWord.join("");
     document.querySelector(".remaining-guesses-static").innerHTML = w.totalGuessesStatic;
+    document.querySelector(".remaining-guesses").innerHTML = w.totalGuesses;
     document.querySelector(".letters-guessed-static").innerHTML = w.guessedLettersStatic;
 
  }
