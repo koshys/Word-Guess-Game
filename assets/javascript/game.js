@@ -2,7 +2,6 @@
  * Word guessing Game
  */
 
-
  /**
   * main game object that contains 
   * 
@@ -61,8 +60,9 @@
         for ( var i = 0; i < this.choosenWord.length; i++) {
             this.currentWord.push("_ ");
         }
-    }
- }
+    } // end of setChoosenWord
+
+ }// end of WordGameObj
 
  /**
   * @param Pass the word object w
