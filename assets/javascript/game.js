@@ -16,6 +16,7 @@
      * data structure
      * 
      * list of possible words
+     * words are always lowercase here.
      */
     this.dict = [
         "madonna",
@@ -61,7 +62,28 @@
 
         return true;
 
-    }
+    },
+    
+    /**
+     * fill currentWord with key :string
+     * 
+     * @param k : string
+     * @return fill : number | number of blanks filled
+     * 
+     */
+    this.fillCurrentWord= function(k) {
+
+        var fill = 0;
+
+        for ( var i = 0; i < w.choosenWord.length; i++)  {
+            if (w.choosenWord[i] === k ) {
+                w.currentWord[i] = w.choosenWord[i];
+                fill++;
+            }
+        }
+        
+        return fill;
+    },
 
     /**
      * get a random word for the game
@@ -72,10 +94,10 @@
     this.setChoosenWord = function() {
 
         // reset atrributes
-        this.choosenWord = [],
-        this.currentWord = [],
-        this.guessedLetters = [],
-        this.totalGuesses = 0,
+        this.choosenWord = [];
+        this.currentWord = [];
+        this.guessedLetters = [];
+        this.totalGuesses = 0;
 
         // ramdom * ( max - min ) + min 
         this.choosenWord = this.dict[Math.floor(Math.random() * ( 1+ (this.dict.length -1) - 0  ) ) + 0 ].split("");
@@ -114,9 +136,42 @@ function run(w) {
     drawBoard(w);
 
     document.onkeyup = function(event) {
-        console.log(event.key.toLowerCase());
-        console.log(w.isEqualWord());
 
+        // lower case it. 
+        var k = event.key.toLowerCase();
+        var fills = 0
+
+        // reset the board after a win
+        if ( w.isEqualWord() || w.totalGuesses <= 0 ) {
+
+            w.setChoosenWord();
+            //console.log(w.choosenWord.join(""));
+            drawBoard(w);
+
+        } else {      
+
+            // make sure that only alphabets are used.
+            if ( k.length === 1 && (k.charAt(0) >= "a" && k.charAt(0) <= "z" )) {
+
+                if ( !w.isEqualWord()) {
+                    fills = w.fillCurrentWord(k);
+                }
+
+                //console.log(k);            
+                //console.log(w.isEqualWord());
+
+                // remaining guesses
+                w.totalGuesses--;
+
+                // add the wins
+                if ( w.isEqualWord() ) {
+                    w.wins++;
+                }
+
+                drawBoard(w);
+
+            }
+        }
     }
 }
 
@@ -124,6 +179,4 @@ function run(w) {
   var w = new WordGameObj();
   run(w);
 
-  console.log(w.choosenWord.join(""));
-
-  
+  //console.log(w.choosenWord.join(""));
