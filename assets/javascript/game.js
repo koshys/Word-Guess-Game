@@ -166,7 +166,6 @@ function run(w) {
         if ( w.isEqualWord() || w.totalGuesses <= 0 ) {
 
             w.setChoosenWord();
-            //console.log(w.choosenWord.join(""));
             drawBoard(w);
 
         } else {      
@@ -177,9 +176,6 @@ function run(w) {
                 if ( !w.isEqualWord()) {
                     fills = w.fillCurrentWord(k);
                 }
-
-                //console.log(k);            
-                //console.log(w.isEqualWord());
 
                 // remaining guesses
                 w.totalGuesses--;
@@ -199,8 +195,6 @@ function run(w) {
     }
 }
 
-
-  var w = new WordGameObj();
-  run(w);
-
-  //console.log(w.choosenWord.join(""));
+// initiate the game
+var w = new WordGameObj();
+run(w);
