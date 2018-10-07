@@ -86,6 +86,26 @@
     },
 
     /**
+     * add k: string to guessedLetters : Array
+     * 
+     */
+    this.fillGuessedLetter = function(k) {
+
+        var fill = 0;
+
+        for ( var i = 0; i < w.guessedLetters.length; i++)  {
+            if (w.guessedLetters[i] === k ) {
+                return;
+            }
+        }
+
+        // new letter at this point.
+        w.guessedLetters.push(k);
+
+        return;
+    },    
+
+    /**
      * get a random word for the game
      * max = (this.dict.length -1)
      * min = 0
@@ -127,6 +147,7 @@
     document.querySelector(".remaining-guesses-static").innerHTML = w.totalGuessesStatic;
     document.querySelector(".remaining-guesses").innerHTML = w.totalGuesses;
     document.querySelector(".letters-guessed-static").innerHTML = w.guessedLettersStatic;
+    document.querySelector(".letters-guessed").innerHTML = w.guessedLetters.join("&nbsp;");
 
  }
 
@@ -162,6 +183,9 @@ function run(w) {
 
                 // remaining guesses
                 w.totalGuesses--;
+
+                // tag the k to the guessed Letters only once
+                w.fillGuessedLetter(k);
 
                 // add the wins
                 if ( w.isEqualWord() ) {
