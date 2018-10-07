@@ -41,6 +41,7 @@
     this.setStatic = function() {
         this.static = "Press any Key to Continue..";
         this.winsStatic = "Wins";
+        this.currentWordStatic = "Current Word";
     }
 
     /**
@@ -59,13 +60,25 @@
 
  }
 
-  var w = new WordGameObj();
-  w.setStatic();
-  document.querySelector(".static").innerHTML = w.static;
-  document.querySelector(".wins-static").innerHTML = w.winsStatic;
-  document.querySelector(".wins").innerHTML = w.wins;
+ /**
+  * @param Pass the word object w
+  * @action draw the board
+  */
+ function drawBoard(w) {
+    document.querySelector(".static").innerHTML = w.static;
+    document.querySelector(".wins-static").innerHTML = w.winsStatic;
+    document.querySelector(".wins").innerHTML = w.wins;
+ }
 
-  w.setChoosenWord();
+function run(w) {
+    w.setStatic();
+    w.setChoosenWord();
+    drawBoard(w);
+}
+
+
+  var w = new WordGameObj();
+  run(w);
 
   console.log(w.choosenWord.join(""));
 
