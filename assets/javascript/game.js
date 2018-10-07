@@ -41,8 +41,8 @@
     this.setStatic = function() {
         this.static = "Press any Key to Continue..";
         this.winsStatic = "Wins";
-        this.currentWordStatic = "Current Word";
-    }
+        this.currentWordStatic = "Current Word";        
+    },
 
     /**
      * get a random word for the game
@@ -55,9 +55,11 @@
         // ramdom * ( max - min ) + min 
         this.choosenWord = this.dict[Math.floor(Math.random() * ( 1+ (this.dict.length -1) - 0  ) ) + 0 ].split("");
 
+        // set the blanks
+        for ( var i = 0; i < this.choosenWord.length; i++) {
+            this.currentWord.push("_ ");
+        }
     }
-
-
  }
 
  /**
@@ -68,6 +70,8 @@
     document.querySelector(".static").innerHTML = w.static;
     document.querySelector(".wins-static").innerHTML = w.winsStatic;
     document.querySelector(".wins").innerHTML = w.wins;
+    document.querySelector(".current-word-static").innerHTML = w.currentWordStatic;
+    document.querySelector(".current-word").innerHTML = w.currentWord.join("");
  }
 
 function run(w) {
