@@ -73,7 +73,7 @@
     this.isEqualWord = function() {
 
         for ( var i = 0; i < w.choosenWord.length; i++)  {
-            if (w.choosenWord[i] !== w.currentWord[i] ) {
+            if (this.choosenWord[i] !== this.currentWord[i] ) {
                 return false; 
             }
         }
@@ -93,9 +93,9 @@
 
         var fill = 0;
 
-        for ( var i = 0; i < w.choosenWord.length; i++)  {
-            if (w.choosenWord[i] === k ) {
-                w.currentWord[i] = w.choosenWord[i];
+        for ( var i = 0; i < this.choosenWord.length; i++)  {
+            if (this.choosenWord[i] === k ) {
+                this.currentWord[i] = this.choosenWord[i];
                 fill++;
             }
         }
@@ -111,14 +111,14 @@
 
         var fill = 0;
 
-        for ( var i = 0; i < w.guessedLetters.length; i++)  {
-            if (w.guessedLetters[i] === k ) {
+        for ( var i = 0; i < this.guessedLetters.length; i++)  {
+            if (this.guessedLetters[i] === k ) {
                 return;
             }
         }
 
         // new letter at this point.
-        w.guessedLetters.push(k);
+        this.guessedLetters.push(k);
 
         return;
     },    
