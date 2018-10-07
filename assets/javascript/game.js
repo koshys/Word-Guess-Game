@@ -42,6 +42,8 @@
         this.static = "Press any Key to Continue..";
         this.winsStatic = "Wins";
         this.currentWordStatic = "Current Word";        
+        this.totalGuessesStatic = "Number of Guesses Remaining";
+        this.guessedLettersStatic = "Letters already guessed";
     },
 
     /**
@@ -72,6 +74,9 @@
     document.querySelector(".wins").innerHTML = w.wins;
     document.querySelector(".current-word-static").innerHTML = w.currentWordStatic;
     document.querySelector(".current-word").innerHTML = w.currentWord.join("");
+    document.querySelector(".remaining-guesses-static").innerHTML = w.totalGuessesStatic;
+    document.querySelector(".letters-guessed-static").innerHTML = w.guessedLettersStatic;
+
  }
 
 function run(w) {
